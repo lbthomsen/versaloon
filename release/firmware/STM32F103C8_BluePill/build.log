@@ -1,116 +1,0 @@
-Sending build context to Docker daemon 557.1 kBSending build context to Docker daemon 1.114 MBSending build context to Docker daemon 1.671 MBSending build context to Docker daemon 2.228 MBSending build context to Docker daemon 2.785 MBSending build context to Docker daemon 3.342 MBSending build context to Docker daemon 3.899 MBSending build context to Docker daemon 4.456 MBSending build context to Docker daemon 5.014 MBSending build context to Docker daemon 5.571 MBSending build context to Docker daemon 6.128 MBSending build context to Docker daemon 6.685 MBSending build context to Docker daemon 7.242 MBSending build context to Docker daemon 7.799 MBSending build context to Docker daemon 8.356 MBSending build context to Docker daemon 8.913 MBSending build context to Docker daemon  9.47 MBSending build context to Docker daemon 10.03 MBSending build context to Docker daemon 10.58 MBSending build context to Docker daemon 11.14 MBSending build context to Docker daemon  11.7 MBSending build context to Docker daemon 12.26 MBSending build context to Docker daemon 12.81 MBSending build context to Docker daemon 13.37 MBSending build context to Docker daemon 13.93 MBSending build context to Docker daemon 14.48 MBSending build context to Docker daemon 15.04 MBSending build context to Docker daemon  15.6 MBSending build context to Docker daemon 16.15 MBSending build context to Docker daemon 16.71 MBSending build context to Docker daemon 17.27 MBSending build context to Docker daemon 17.83 MBSending build context to Docker daemon 18.38 MBSending build context to Docker daemon 18.94 MBSending build context to Docker daemon  19.5 MBSending build context to Docker daemon 20.05 MBSending build context to Docker daemon 20.61 MBSending build context to Docker daemon 21.17 MBSending build context to Docker daemon 21.73 MBSending build context to Docker daemon 22.28 MBSending build context to Docker daemon 22.84 MBSending build context to Docker daemon  23.4 MBSending build context to Docker daemon 23.59 MB
-Step 1 : FROM ubuntu:14.04
- ---> 302fa07d8117
-Step 2 : MAINTAINER Benjamin Henrion <zoobab@gmail.com>
- ---> Using cache
- ---> cdc8a4470b9e
-Step 3 : LABEL Description "This image builds a JTAG Versaloon firmware for the STM32 Bluepill board."
- ---> Using cache
- ---> 40237f096db7
-Step 4 : RUN DEBIAN_FRONTEND=noninteractive apt-get update -y -q
- ---> Using cache
- ---> 45d518d4b3cf
-Step 5 : RUN DEBIAN_FRONTEND=noninteractive apt-get install -y -q make gcc-arm-none-eabi binutils sudo
- ---> Using cache
- ---> c94fac3b82f0
-Step 6 : ENV user versaloon
- ---> Using cache
- ---> d59b7b2d3543
-Step 7 : RUN useradd -d /home/$user -m -s /bin/bash $user
- ---> Using cache
- ---> 6b9c41005aed
-Step 8 : RUN echo "$user ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/$user
- ---> Using cache
- ---> 8b567a011130
-Step 9 : RUN chmod 0440 /etc/sudoers.d/$user
- ---> Using cache
- ---> 5411e38dec61
-Step 10 : USER $user
- ---> Using cache
- ---> c8a71e946f65
-Step 11 : WORKDIR /home/$user
- ---> Using cache
- ---> 0ce608ec1a4c
-Step 12 : RUN mkdir -pv code
- ---> Using cache
- ---> fdffdfae21cd
-Step 13 : COPY . ./code/
- ---> cbd8aab2ce46
-Removing intermediate container a60fbe07c949
-Step 14 : RUN chown $user.$user -R /home/$user/code
- ---> Running in 0da1d9f9d96c
- ---> f311fa3efc39
-Removing intermediate container 0da1d9f9d96c
-Step 15 : WORKDIR /home/$user/code/dongle/firmware/Projects/Versaloon/GCC
- ---> Running in eb78efdc265a
- ---> c1749fa1a58b
-Removing intermediate container eb78efdc265a
-Step 16 : RUN make
- ---> Running in 94d31809a88e
-Start Compiling Project Versaloon
-User Files:
-./main.o ./usb_protocol_Versaloon.o ./vsfusbd_Versaloon.o ./compiler_string.o ./syscall.o ./stlink.o ./adi_v5p1.o ./cm_common.o ./app_interfaces.o ./GPIO.o ./CLKO.o ./USART.o ./SPI.o ./SDIO.o ./JTAG_TAP.o ./SWD.o ./SWIM.o ./DUSI.o ./MicroWire.o ./PowerExt.o ./IIC.o ./C2.o ./ISSP.o ./LPC_ICP.o ./MSP430_JTAG.o ./BDM.o ./PWM.o ./EBI.o ./ADC.o ./interfaces.o ./core.o ./STM32_CLKO.o ./STM32_GPIO.o ./STM32_USBD.o ./STM32_SPI.o ./STM32_TIM.o ./STM32_EINT.o ./STM32_ADC.o ./STM32_USART.o ./STM32_EBI.o ./STM32_FLASH.o ./STM32_SDIO.o ./usart_stream.o ./stream.o ./mal.o ./vsf_usbd.o ./vsfusbd_CDC.o ./vsfusbd_CDCACM.o ./vsfusbd_HID.o ./vsfusbd_MSC_BOT.o ./SCSI.o ./buffer.o ./fakefat32.o ./crc.o ./USB_TO_XXX.o ./USB_TO_CLKO.o ./USB_TO_USART.o ./USB_TO_SPI.o ./USB_TO_IIC.o ./USB_TO_GPIO.o ./USB_TO_PWM.o ./USB_TO_ADC.o ./USB_TO_DAC.o ./USB_TO_POWER.o ./USB_TO_C2.o ./USB_TO_ISSP.o ./USB_TO_LPCICP.o ./USB_TO_MSP430_JTAG.o ./USB_TO_JTAG_HL.o ./USB_TO_SWD.o ./USB_TO_JTAG_LL.o ./USB_TO_SWIM.o ./USB_TO_JTAG_RAW.o ./USB_TO_BDM.o ./USB_TO_DUSI.o ./USB_TO_MICROWIRE.o ./USB_TO_EBI.o ./CommandProcessor.o
-STM32 Library Files:
-./core_cm3.o ./system_stm32f10x.o ./misc.o ./stm32f10x_dma.o ./stm32f10x_gpio.o ./stm32f10x_rcc.o ./stm32f10x_spi.o ./stm32f10x_tim.o ./usb_mem.o ./usb_regs.o
-------------------------------------------------------------
-gcc version is
-arm-none-eabi-gcc (4.8.2-14ubuntu1+6) 4.8.2
-Copyright (C) 2013 Free Software Foundation, Inc.
-This is free software; see the source for copying conditions.  There is NO
-warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-
-------------------------------------------------------------
-arm-none-eabi-gcc -c -mcpu=cortex-m3 -mthumb -mfpu=vfp  -nostartfiles -fno-common -fomit-frame-pointer -Wall -g -Os -I .. -I ../../.. -I ../../../../../vsf/interfaces/cpu/stm32/hw/STM32F10x_Lib/Libraries/STM32F10x_StdPeriph_Driver/inc -I ../../../../../vsf/interfaces/cpu/stm32/hw/STM32F10x_Lib/Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x -I ../../../../../vsf/interfaces/cpu/stm32/hw/STM32F10x_Lib/Libraries/CMSIS/CM3/CoreSupport -I ../../../../../vsf/interfaces/cpu/stm32/hw/STM32F10x_Lib/Libraries/STM32_USB-FS-Device_Driver/inc -I ../.. -I ../../../versaloon_usb -I ../../../../../vsf/interfaces/cpu/stm32/hw -I ../../../../../vsf/compiler/ARMGCC -I . -I ../../../stlink -I ../../../../../src/target/core/arm_adi -I ../../../../../src/target/cortex-m -I ../../../Interfaces -I ../../../Interfaces/APP -I ../../../Interfaces/APP/GPIO -I ../../../Interfaces/APP/USART -I ../../../Interfaces/APP/SPI -I ../../../Interfaces/APP/JTAG -I ../../../Interfaces/APP/SWD -I ../../../Interfaces/APP/SWIM -I ../../../Interfaces/APP/DUSI -I ../../../Interfaces/APP/MicroWire -I ../../../Interfaces/APP/PowerExt -I ../../../Interfaces/APP/IIC -I ../../../Interfaces/APP/C2 -I ../../../Interfaces/APP/ISSP -I ../../../Interfaces/APP/LPC_ICP -I ../../../Interfaces/APP/MSP430_JTAG -I ../../../Interfaces/APP/BDM -I ../../../Interfaces/APP/PWM -I ../../../Interfaces/APP/EBI -I ../../../Interfaces/APP/ADC -I ../vsf_cfg -I ../../../../../vsf -I ../../../../../vsf/interfaces -I ../../../../../vsf/interfaces/cpu/stm32 -I ../../../../../vsf/interfaces/cpu/stm32/gpio -I ../../../../../vsf/interfaces/cpu/stm32/usbd -I ../../../../../vsf/interfaces/cpu/stm32/spi -I ../../../../../vsf/interfaces/cpu/stm32/timer -I ../../../../../vsf/interfaces/cpu/stm32/eint -I ../../../../../vsf/interfaces/cpu/stm32/adc -I ../../../../../vsf/interfaces/cpu/stm32/usart -I ../../../../../vsf/interfaces/cpu/stm32/ebi -I ../../../../../vsf/interfaces/cpu/stm32/flash -I ../../../../../vsf/interfaces/cpu/stm32/sdio -I ../../../../../vsf/tool/list -I ../../../USB_TO_XXX -DUSE_STDPERIPH_DRIVER -DSTM32F10X_XL -DCORE_DEBUG=STM32_DBG_NONE -DHSE_VALUE=8000000UL -DHW_BOARD=STM32F103C8_BluePill -D_HARDWARE_VER=0x15 -DFLASH_LOAD_OFFSET=0x8000 -D__TARGET_CHIP__=stm32 ../../../../../vsf/interfaces/cpu/stm32/hw/STM32F10x_Lib/Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x/startup/gcc_ride7/startup_stm32f10x_md.s
-arm-none-eabi-gcc -c -mcpu=cortex-m3 -mthumb -mfpu=vfp  -nostartfiles -fno-common -fomit-frame-pointer -Wall -g -Os -I .. -I ../../.. -I ../../../../../vsf/interfaces/cpu/stm32/hw/STM32F10x_Lib/Libraries/STM32F10x_StdPeriph_Driver/inc -I ../../../../../vsf/interfaces/cpu/stm32/hw/STM32F10x_Lib/Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x -I ../../../../../vsf/interfaces/cpu/stm32/hw/STM32F10x_Lib/Libraries/CMSIS/CM3/CoreSupport -I ../../../../../vsf/interfaces/cpu/stm32/hw/STM32F10x_Lib/Libraries/STM32_USB-FS-Device_Driver/inc -I ../.. -I ../../../versaloon_usb -I ../../../../../vsf/interfaces/cpu/stm32/hw -I ../../../../../vsf/compiler/ARMGCC -I . -I ../../../stlink -I ../../../../../src/target/core/arm_adi -I ../../../../../src/target/cortex-m -I ../../../Interfaces -I ../../../Interfaces/APP -I ../../../Interfaces/APP/GPIO -I ../../../Interfaces/APP/USART -I ../../../Interfaces/APP/SPI -I ../../../Interfaces/APP/JTAG -I ../../../Interfaces/APP/SWD -I ../../../Interfaces/APP/SWIM -I ../../../Interfaces/APP/DUSI -I ../../../Interfaces/APP/MicroWire -I ../../../Interfaces/APP/PowerExt -I ../../../Interfaces/APP/IIC -I ../../../Interfaces/APP/C2 -I ../../../Interfaces/APP/ISSP -I ../../../Interfaces/APP/LPC_ICP -I ../../../Interfaces/APP/MSP430_JTAG -I ../../../Interfaces/APP/BDM -I ../../../Interfaces/APP/PWM -I ../../../Interfaces/APP/EBI -I ../../../Interfaces/APP/ADC -I ../vsf_cfg -I ../../../../../vsf -I ../../../../../vsf/interfaces -I ../../../../../vsf/interfaces/cpu/stm32 -I ../../../../../vsf/interfaces/cpu/stm32/gpio -I ../../../../../vsf/interfaces/cpu/stm32/usbd -I ../../../../../vsf/interfaces/cpu/stm32/spi -I ../../../../../vsf/interfaces/cpu/stm32/timer -I ../../../../../vsf/interfaces/cpu/stm32/eint -I ../../../../../vsf/interfaces/cpu/stm32/adc -I ../../../../../vsf/interfaces/cpu/stm32/usart -I ../../../../../vsf/interfaces/cpu/stm32/ebi -I ../../../../../vsf/interfaces/cpu/stm32/flash -I ../../../../../vsf/interfaces/cpu/stm32/sdio -I ../../../../../vsf/tool/list -I ../../../USB_TO_XXX -DUSE_STDPERIPH_DRIVER -DSTM32F10X_XL -DCORE_DEBUG=STM32_DBG_NONE -DHSE_VALUE=8000000UL -DHW_BOARD=STM32F103C8_BluePill -D_HARDWARE_VER=0x15 -DFLASH_LOAD_OFFSET=0x8000 -D__TARGET_CHIP__=stm32 ../../../main.c ../../../usb_protocol_Versaloon.c ../../../versaloon_usb/vsfusbd_Versaloon.c compiler_string.c syscall.c ../../../stlink/stlink.c ../../../../../src/target/core/arm_adi/adi_v5p1.c ../../../../../src/target/cortex-m/cm_common.c ../../../Interfaces/app_interfaces.c ../../../Interfaces/APP/GPIO/GPIO.c ../../../Interfaces/APP/CLKO/CLKO.c ../../../Interfaces/APP/USART/USART.c ../../../Interfaces/APP/SPI/SPI.c ../../../Interfaces/APP/SDIO/SDIO.c ../../../Interfaces/APP/JTAG/JTAG_TAP.c ../../../Interfaces/APP/SWD/SWD.c ../../../Interfaces/APP/SWIM/SWIM.c ../../../Interfaces/APP/DUSI/DUSI.c ../../../Interfaces/APP/MicroWire/MicroWire.c ../../../Interfaces/APP/PowerExt/PowerExt.c ../../../Interfaces/APP/IIC/IIC.c ../../../Interfaces/APP/C2/C2.c ../../../Interfaces/APP/ISSP/ISSP.c ../../../Interfaces/APP/LPC_ICP/LPC_ICP.c ../../../Interfaces/APP/MSP430_JTAG/MSP430_JTAG.c ../../../Interfaces/APP/BDM/BDM.c ../../../Interfaces/APP/PWM/PWM.c ../../../Interfaces/APP/EBI/EBI.c ../../../Interfaces/APP/ADC/ADC.c ../../../../../vsf/interfaces/interfaces.c ../../../../../vsf/interfaces/cpu/stm32/core.c ../../../../../vsf/interfaces/cpu/stm32/clko/STM32_CLKO.c ../../../../../vsf/interfaces/cpu/stm32/gpio/STM32_GPIO.c ../../../../../vsf/interfaces/cpu/stm32/usbd/STM32_USBD.c ../../../../../vsf/interfaces/cpu/stm32/spi/STM32_SPI.c ../../../../../vsf/interfaces/cpu/stm32/timer/STM32_TIM.c ../../../../../vsf/interfaces/cpu/stm32/eint/STM32_EINT.c ../../../../../vsf/interfaces/cpu/stm32/adc/STM32_ADC.c ../../../../../vsf/interfaces/cpu/stm32/usart/STM32_USART.c ../../../../../vsf/interfaces/cpu/stm32/ebi/STM32_EBI.c ../../../../../vsf/interfaces/cpu/stm32/flash/STM32_FLASH.c ../../../../../vsf/interfaces/cpu/stm32/sdio/STM32_SDIO.c ../../../../../vsf/dal/usart_stream/usart_stream.c ../../../../../vsf/dal/stream/stream.c ../../../../../vsf/dal/mal/mal.c ../../../../../vsf/stack/usb_device/vsf_usbd.c ../../../../../vsf/stack/usb_device/class/CDC/vsfusbd_CDC.c ../../../../../vsf/stack/usb_device/class/CDC/vsfusbd_CDCACM.c ../../../../../vsf/stack/usb_device/class/HID/vsfusbd_HID.c ../../../../../vsf/stack/usb_device/class/MSC/vsfusbd_MSC_BOT.c ../../../../../vsf/stack/usb_device/class/MSC/SCSI.c ../../../../../vsf/tool/buffer/buffer.c ../../../../../vsf/tool/fakefat32/fakefat32.c ../../../../../vsf/tool/crc/crc.c ../../../USB_TO_XXX/USB_TO_XXX.c ../../../USB_TO_XXX/USB_TO_CLKO.c ../../../USB_TO_XXX/USB_TO_USART.c ../../../USB_TO_XXX/USB_TO_SPI.c ../../../USB_TO_XXX/USB_TO_IIC.c ../../../USB_TO_XXX/USB_TO_GPIO.c ../../../USB_TO_XXX/USB_TO_PWM.c ../../../USB_TO_XXX/USB_TO_ADC.c ../../../USB_TO_XXX/USB_TO_DAC.c ../../../USB_TO_XXX/USB_TO_POWER.c ../../../USB_TO_XXX/USB_TO_C2.c ../../../USB_TO_XXX/USB_TO_ISSP.c ../../../USB_TO_XXX/USB_TO_LPCICP.c ../../../USB_TO_XXX/USB_TO_MSP430_JTAG.c ../../../USB_TO_XXX/USB_TO_JTAG_HL.c ../../../USB_TO_XXX/USB_TO_SWD.c ../../../USB_TO_XXX/USB_TO_JTAG_LL.c ../../../USB_TO_XXX/USB_TO_SWIM.c ../../../USB_TO_XXX/USB_TO_JTAG_RAW.c ../../../USB_TO_XXX/USB_TO_BDM.c ../../../USB_TO_XXX/USB_TO_DUSI.c ../../../USB_TO_XXX/USB_TO_MICROWIRE.c ../../../USB_TO_XXX/USB_TO_EBI.c ../../../USB_TO_XXX/CommandProcessor.c
-[91m../../../../../vsf/interfaces/cpu/stm32/spi/STM32_SPI.c: In function 'stm32_spi_select':
-[0m[91m../../../../../vsf/interfaces/cpu/stm32/spi/STM32_SPI.c:593:10: warning: unused variable 'remap_idx' [-Wunused-variable]
-  uint8_t remap_idx = (index >> 4) & 0x0F;
-          ^
-[0m[91m../../../../../vsf/interfaces/cpu/stm32/spi/STM32_SPI.c: In function 'stm32_spi_deselect':
-[0m[91m../../../../../vsf/interfaces/cpu/stm32/spi/STM32_SPI.c:656:10: warning: unused variable 'remap_idx' [-Wunused-variable]
-  uint8_t remap_idx = (index >> 4) & 0x0F;
-          ^
-[0m[91m../../../../../vsf/interfaces/cpu/stm32/timer/STM32_TIM.c: In function 'stm32_timer_config':
-[0m[91m../../../../../vsf/interfaces/cpu/stm32/timer/STM32_TIM.c:85:16: warning: variable 'timer' set but not used [-Wunused-but-set-variable]
-  TIM_TypeDef * timer;
-                ^
-[0m[91m../../../../../vsf/interfaces/cpu/stm32/timer/STM32_TIM.c: In function 'stm32_timer_config_channel':
-[0m[91m../../../../../vsf/interfaces/cpu/stm32/timer/STM32_TIM.c:165:16: warning: variable 'timer' set but not used [-Wunused-but-set-variable]
-  TIM_TypeDef * timer;
-                ^
-[0m[91m../../../../../vsf/interfaces/cpu/stm32/sdio/STM32_SDIO.c: In function 'stm32_sdio_data_tx_isready':
-../../../../../vsf/interfaces/cpu/stm32/sdio/STM32_SDIO.c:310:11: warning: unused variable 'status' [-Wunused-variable]
-  uint32_t status = SDIO->STA;
-           ^
-[0m[91m../../../../../vsf/interfaces/cpu/stm32/sdio/STM32_SDIO.c:318:1: warning: control reaches end of non-void function [-Wreturn-type]
- }
- ^
-[0m[91m../../../../../vsf/tool/fakefat32/fakefat32.c: In function 'find_first_alphabet':
-../../../../../vsf/tool/fakefat32/fakefat32.c:93:2: warning: array subscript has type 'char' [-Wchar-subscripts]
-  while ((*str != '\0') && !isalpha(*str))
-  ^
-[0m[91m../../../../../vsf/tool/fakefat32/fakefat32.c: In function 'strncpy_toupper_fill':
-[0m[91m../../../../../vsf/tool/fakefat32/fakefat32.c:145:4: warning: array subscript has type 'char' [-Wchar-subscripts]
-    if ((*d++ = (char)toupper(*s++)) == 0)
-    ^
-[0m[91m../../../../../vsf/tool/fakefat32/fakefat32.c: In function 'fakefat32_dir_read':
-[0m[91m../../../../../vsf/tool/fakefat32/fakefat32.c:506:4: warning: array subscript has type 'char' [-Wchar-subscripts]
-    if (islower(find_first_alphabet(file->name)))
-    ^
-[0m[91m../../../../../vsf/tool/fakefat32/fakefat32.c:510:4: warning: array subscript has type 'char' [-Wchar-subscripts]
-    if (islower(find_first_alphabet(file->ext)))
-    ^
-[0marm-none-eabi-gcc -c -mcpu=cortex-m3 -mthumb -mfpu=vfp  -nostartfiles -fno-common -fomit-frame-pointer -Wall -g -Os -I .. -I ../../.. -I ../../../../../vsf/interfaces/cpu/stm32/hw/STM32F10x_Lib/Libraries/STM32F10x_StdPeriph_Driver/inc -I ../../../../../vsf/interfaces/cpu/stm32/hw/STM32F10x_Lib/Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x -I ../../../../../vsf/interfaces/cpu/stm32/hw/STM32F10x_Lib/Libraries/CMSIS/CM3/CoreSupport -I ../../../../../vsf/interfaces/cpu/stm32/hw/STM32F10x_Lib/Libraries/STM32_USB-FS-Device_Driver/inc -I ../.. -I ../../../versaloon_usb -I ../../../../../vsf/interfaces/cpu/stm32/hw -I ../../../../../vsf/compiler/ARMGCC -I . -I ../../../stlink -I ../../../../../src/target/core/arm_adi -I ../../../../../src/target/cortex-m -I ../../../Interfaces -I ../../../Interfaces/APP -I ../../../Interfaces/APP/GPIO -I ../../../Interfaces/APP/USART -I ../../../Interfaces/APP/SPI -I ../../../Interfaces/APP/JTAG -I ../../../Interfaces/APP/SWD -I ../../../Interfaces/APP/SWIM -I ../../../Interfaces/APP/DUSI -I ../../../Interfaces/APP/MicroWire -I ../../../Interfaces/APP/PowerExt -I ../../../Interfaces/APP/IIC -I ../../../Interfaces/APP/C2 -I ../../../Interfaces/APP/ISSP -I ../../../Interfaces/APP/LPC_ICP -I ../../../Interfaces/APP/MSP430_JTAG -I ../../../Interfaces/APP/BDM -I ../../../Interfaces/APP/PWM -I ../../../Interfaces/APP/EBI -I ../../../Interfaces/APP/ADC -I ../vsf_cfg -I ../../../../../vsf -I ../../../../../vsf/interfaces -I ../../../../../vsf/interfaces/cpu/stm32 -I ../../../../../vsf/interfaces/cpu/stm32/gpio -I ../../../../../vsf/interfaces/cpu/stm32/usbd -I ../../../../../vsf/interfaces/cpu/stm32/spi -I ../../../../../vsf/interfaces/cpu/stm32/timer -I ../../../../../vsf/interfaces/cpu/stm32/eint -I ../../../../../vsf/interfaces/cpu/stm32/adc -I ../../../../../vsf/interfaces/cpu/stm32/usart -I ../../../../../vsf/interfaces/cpu/stm32/ebi -I ../../../../../vsf/interfaces/cpu/stm32/flash -I ../../../../../vsf/interfaces/cpu/stm32/sdio -I ../../../../../vsf/tool/list -I ../../../USB_TO_XXX -DUSE_STDPERIPH_DRIVER -DSTM32F10X_XL -DCORE_DEBUG=STM32_DBG_NONE -DHSE_VALUE=8000000UL -DHW_BOARD=STM32F103C8_BluePill -D_HARDWARE_VER=0x15 -DFLASH_LOAD_OFFSET=0x8000 -D__TARGET_CHIP__=stm32 ../../../../../vsf/interfaces/cpu/stm32/hw/STM32F10x_Lib/Libraries/CMSIS/CM3/CoreSupport/core_cm3.c ../../../../../vsf/interfaces/cpu/stm32/hw/STM32F10x_Lib/Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ../../../../../vsf/interfaces/cpu/stm32/hw/STM32F10x_Lib/Libraries/STM32F10x_StdPeriph_Driver/src/misc.c ../../../../../vsf/interfaces/cpu/stm32/hw/STM32F10x_Lib/Libraries/STM32F10x_StdPeriph_Driver/src/stm32f10x_dma.c ../../../../../vsf/interfaces/cpu/stm32/hw/STM32F10x_Lib/Libraries/STM32F10x_StdPeriph_Driver/src/stm32f10x_gpio.c ../../../../../vsf/interfaces/cpu/stm32/hw/STM32F10x_Lib/Libraries/STM32F10x_StdPeriph_Driver/src/stm32f10x_rcc.c ../../../../../vsf/interfaces/cpu/stm32/hw/STM32F10x_Lib/Libraries/STM32F10x_StdPeriph_Driver/src/stm32f10x_spi.c ../../../../../vsf/interfaces/cpu/stm32/hw/STM32F10x_Lib/Libraries/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ../../../../../vsf/interfaces/cpu/stm32/hw/STM32F10x_Lib/Libraries/STM32_USB-FS-Device_Driver/src/usb_mem.c ../../../../../vsf/interfaces/cpu/stm32/hw/STM32F10x_Lib/Libraries/STM32_USB-FS-Device_Driver/src/usb_regs.c
-arm-none-eabi-gcc -Wl,--gc-sections,-Map=Versaloon_GCC-STM32F103C8_BluePill-0x8000.map,-cref,-u,Reset_Handler -I .. -I ../../.. -I ../../../../../vsf/interfaces/cpu/stm32/hw/STM32F10x_Lib/Libraries/STM32F10x_StdPeriph_Driver/inc -I ../../../../../vsf/interfaces/cpu/stm32/hw/STM32F10x_Lib/Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x -I ../../../../../vsf/interfaces/cpu/stm32/hw/STM32F10x_Lib/Libraries/CMSIS/CM3/CoreSupport -I ../../../../../vsf/interfaces/cpu/stm32/hw/STM32F10x_Lib/Libraries/STM32_USB-FS-Device_Driver/inc -I ../.. -I ../../../versaloon_usb -I ../../../../../vsf/interfaces/cpu/stm32/hw -I ../../../../../vsf/compiler/ARMGCC -I . -I ../../../stlink -I ../../../../../src/target/core/arm_adi -I ../../../../../src/target/cortex-m -I ../../../Interfaces -I ../../../Interfaces/APP -I ../../../Interfaces/APP/GPIO -I ../../../Interfaces/APP/USART -I ../../../Interfaces/APP/SPI -I ../../../Interfaces/APP/JTAG -I ../../../Interfaces/APP/SWD -I ../../../Interfaces/APP/SWIM -I ../../../Interfaces/APP/DUSI -I ../../../Interfaces/APP/MicroWire -I ../../../Interfaces/APP/PowerExt -I ../../../Interfaces/APP/IIC -I ../../../Interfaces/APP/C2 -I ../../../Interfaces/APP/ISSP -I ../../../Interfaces/APP/LPC_ICP -I ../../../Interfaces/APP/MSP430_JTAG -I ../../../Interfaces/APP/BDM -I ../../../Interfaces/APP/PWM -I ../../../Interfaces/APP/EBI -I ../../../Interfaces/APP/ADC -I ../vsf_cfg -I ../../../../../vsf -I ../../../../../vsf/interfaces -I ../../../../../vsf/interfaces/cpu/stm32 -I ../../../../../vsf/interfaces/cpu/stm32/gpio -I ../../../../../vsf/interfaces/cpu/stm32/usbd -I ../../../../../vsf/interfaces/cpu/stm32/spi -I ../../../../../vsf/interfaces/cpu/stm32/timer -I ../../../../../vsf/interfaces/cpu/stm32/eint -I ../../../../../vsf/interfaces/cpu/stm32/adc -I ../../../../../vsf/interfaces/cpu/stm32/usart -I ../../../../../vsf/interfaces/cpu/stm32/ebi -I ../../../../../vsf/interfaces/cpu/stm32/flash -I ../../../../../vsf/interfaces/cpu/stm32/sdio -I ../../../../../vsf/tool/list -I ../../../USB_TO_XXX -L../../ -T versaloonSTM32.ld ./startup_stm32f10x_md.o ./core_cm3.o ./system_stm32f10x.o ./misc.o ./stm32f10x_dma.o ./stm32f10x_gpio.o ./stm32f10x_rcc.o ./stm32f10x_spi.o ./stm32f10x_tim.o ./usb_mem.o ./usb_regs.o ./main.o ./usb_protocol_Versaloon.o ./vsfusbd_Versaloon.o ./compiler_string.o ./syscall.o ./stlink.o ./adi_v5p1.o ./cm_common.o ./app_interfaces.o ./GPIO.o ./CLKO.o ./USART.o ./SPI.o ./SDIO.o ./JTAG_TAP.o ./SWD.o ./SWIM.o ./DUSI.o ./MicroWire.o ./PowerExt.o ./IIC.o ./C2.o ./ISSP.o ./LPC_ICP.o ./MSP430_JTAG.o ./BDM.o ./PWM.o ./EBI.o ./ADC.o ./interfaces.o ./core.o ./STM32_CLKO.o ./STM32_GPIO.o ./STM32_USBD.o ./STM32_SPI.o ./STM32_TIM.o ./STM32_EINT.o ./STM32_ADC.o ./STM32_USART.o ./STM32_EBI.o ./STM32_FLASH.o ./STM32_SDIO.o ./usart_stream.o ./stream.o ./mal.o ./vsf_usbd.o ./vsfusbd_CDC.o ./vsfusbd_CDCACM.o ./vsfusbd_HID.o ./vsfusbd_MSC_BOT.o ./SCSI.o ./buffer.o ./fakefat32.o ./crc.o ./USB_TO_XXX.o ./USB_TO_CLKO.o ./USB_TO_USART.o ./USB_TO_SPI.o ./USB_TO_IIC.o ./USB_TO_GPIO.o ./USB_TO_PWM.o ./USB_TO_ADC.o ./USB_TO_DAC.o ./USB_TO_POWER.o ./USB_TO_C2.o ./USB_TO_ISSP.o ./USB_TO_LPCICP.o ./USB_TO_MSP430_JTAG.o ./USB_TO_JTAG_HL.o ./USB_TO_SWD.o ./USB_TO_JTAG_LL.o ./USB_TO_SWIM.o ./USB_TO_JTAG_RAW.o ./USB_TO_BDM.o ./USB_TO_DUSI.o ./USB_TO_MICROWIRE.o ./USB_TO_EBI.o ./CommandProcessor.o --output Versaloon_GCC-STM32F103C8_BluePill-0x8000.elf
-arm-none-eabi-objcopy -O ihex Versaloon_GCC-STM32F103C8_BluePill-0x8000.elf Versaloon_GCC-STM32F103C8_BluePill-0x8000.hex
-arm-none-eabi-objcopy -O binary Versaloon_GCC-STM32F103C8_BluePill-0x8000.elf Versaloon_GCC-STM32F103C8_BluePill-0x8000.bin
-------------------------------------------------------------
-size Versaloon_GCC-STM32F103C8_BluePill-0x8000.elf
-   text	   data	    bss	    dec	    hex	filename
-  57636	   3196	  14220	  75052	  1252c	Versaloon_GCC-STM32F103C8_BluePill-0x8000.elf
-------------------------------------------------------------
-bye!!
- ---> cdd1d37e4ede
-Removing intermediate container 94d31809a88e
-Successfully built cdd1d37e4ede
-'/home/versaloon/code/dongle/firmware/Projects/Versaloon/GCC/Versaloon_GCC-STM32F103C8_BluePill-0x8000.hex' -> '/mnt/Versaloon_GCC-STM32F103C8_BluePill-0x8000.hex'
