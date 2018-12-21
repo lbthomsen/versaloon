@@ -6,18 +6,21 @@ JTAG Versaloon firmware for the STM32 Bluepill board.
 Build
 =====
 
-If you have docker, you can just run ```./build.sh```, it will build the firmware for you. The binaries are the following :
+Just a matter of `make -j` in the root folder if you have an ARM GCC toolchain installed on your computer. If you have docker, you can just run ```./build.sh```, it will build the firmware for you.
+
+The produced binaries are the following :
 
 ```
-release/firmware/STM32F103C8_BluePill/Versaloon_GCC-STM32F103C8_BluePill-0x0.hex
-release/firmware/STM32F103C8_BluePill/Versaloon_GCC-STM32F103C8_BluePill-0x0.bin
+Versaloon-STM32F103C8_BluePill.hex
+Versaloon-STM32F103C8_BluePill.bin
+Versaloon-STM32F103C8_BluePill.elf
 ```
 
 Flashing
 ========
 
 ```
-st-flash write release/firmware/STM32F103C8_BluePill/Versaloon_GCC-STM32F103C8_BluePill-0x0.bin 0x8000000
+st-flash write Versaloon-STM32F103C8_BluePill.bin 0x8000000
 ```
 
 lsusb

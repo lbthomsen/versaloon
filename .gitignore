@@ -1,2 +1,4 @@
 *.o
-release/firmware/STM32F103C8_BluePill/build.log
+*.bin
+*.elf
+*.hex

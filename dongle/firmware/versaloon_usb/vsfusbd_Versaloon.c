@@ -9,7 +9,7 @@
 
 #include "vsfusbd_Versaloon.h"
 
-#include "USB_TO_XXX.h"
+#include "../USB_TO_XXX/USB_TO_XXX.h"
 
 #if STLINK_EN
 #include "stlink.h"

@@ -15,5 +15,5 @@ WORKDIR /home/$user
 RUN mkdir -pv code
 COPY . ./code/
 RUN sudo chown $user.$user -R /home/$user/code
-WORKDIR /home/$user/code/dongle/firmware/Projects/Versaloon/GCC
+WORKDIR /home/$user/code/
 RUN make
