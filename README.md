@@ -19,8 +19,37 @@ Versaloon-STM32F103C8_BluePill.elf
 Flashing
 ========
 
+You can use st-flash with an Stlinkv2 adapter:
+
 ```
 st-flash write Versaloon-STM32F103C8_BluePill.bin 0x8000000
+```
+
+Or alternatively, use an USB-serial adaptor, using the same method as for the
+DirtyJTAG project (see the section "Via a USB-serial adaptor" in
+https://github.com/jeanthom/DirtyJTAG/blob/master/docs/install-bluepill.md ):
+
+```
+$ stm32flash -w Versaloon-STM32F103C8_BluePill.bin -v -g 0x8000000 /dev/ttyUSB0
+stm32flash 0.5
+
+http://stm32flash.sourceforge.net/
+
+Using Parser : Raw BINARY
+Interface serial_posix: 57600 8E1
+Version      : 0x22
+Option 1     : 0x00
+Option 2     : 0x00
+Device ID    : 0x0410 (STM32F10xxx Medium-density)
+- RAM        : 20KiB  (512b reserved by bootloader)
+- Flash      : 128KiB (size first sector: 4x1024)
+- Option RAM : 16b
+- System RAM : 2KiB
+Write to memory
+Erasing memory
+Wrote and verified address 0x0800d8ec (100.00%) Done.
+
+Starting execution at address 0x08000000... done.
 ```
 
 lsusb
