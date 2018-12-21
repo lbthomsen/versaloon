@@ -1,223 +1,0 @@
-Sending build context to Docker daemon 557.1 kBSending build context to Docker daemon 1.114 MBSending build context to Docker daemon 1.671 MBSending build context to Docker daemon 2.228 MBSending build context to Docker daemon 2.785 MBSending build context to Docker daemon 3.342 MBSending build context to Docker daemon 3.899 MBSending build context to Docker daemon 4.456 MBSending build context to Docker daemon 5.014 MBSending build context to Docker daemon 5.571 MBSending build context to Docker daemon 6.128 MBSending build context to Docker daemon 6.685 MBSending build context to Docker daemon 7.242 MBSending build context to Docker daemon 7.799 MBSending build context to Docker daemon 8.356 MBSending build context to Docker daemon 8.913 MBSending build context to Docker daemon  9.47 MBSending build context to Docker daemon 10.03 MBSending build context to Docker daemon 10.58 MBSending build context to Docker daemon 11.14 MBSending build context to Docker daemon  11.7 MBSending build context to Docker daemon 12.26 MBSending build context to Docker daemon 12.81 MBSending build context to Docker daemon 13.37 MBSending build context to Docker daemon 13.93 MBSending build context to Docker daemon 14.48 MBSending build context to Docker daemon 15.04 MBSending build context to Docker daemon  15.6 MBSending build context to Docker daemon 16.15 MBSending build context to Docker daemon 16.71 MBSending build context to Docker daemon 17.27 MBSending build context to Docker daemon 17.83 MBSending build context to Docker daemon 18.38 MBSending build context to Docker daemon 18.94 MBSending build context to Docker daemon  19.5 MBSending build context to Docker daemon 20.05 MBSending build context to Docker daemon 20.61 MBSending build context to Docker daemon 21.17 MBSending build context to Docker daemon 21.73 MBSending build context to Docker daemon 22.28 MBSending build context to Docker daemon 22.84 MBSending build context to Docker daemon  23.4 MBSending build context to Docker daemon  23.6 MB
-Step 1 : FROM ubuntu:16.04
- ---> f7b3f317ec73
-Step 2 : MAINTAINER Benjamin Henrion <zoobab@gmail.com>
- ---> Running in 73d6177bc9d9
- ---> 24ef75ffa805
-Removing intermediate container 73d6177bc9d9
-Step 3 : LABEL Description "This image builds a JTAG Versaloon firmware for the STM32 Bluepill board."
- ---> Running in 29e403bb393e
- ---> aae9cba1b40e
-Removing intermediate container 29e403bb393e
-Step 4 : RUN DEBIAN_FRONTEND=noninteractive apt-get update -y -q
- ---> Running in 2e68c938ac3b
-Get:1 http://archive.ubuntu.com/ubuntu xenial InRelease [247 kB]
-Get:2 http://security.ubuntu.com/ubuntu xenial-security InRelease [102 kB]
-Get:3 http://archive.ubuntu.com/ubuntu xenial-updates InRelease [102 kB]
-Get:4 http://archive.ubuntu.com/ubuntu xenial-backports InRelease [102 kB]
-Get:5 http://security.ubuntu.com/ubuntu xenial-security/universe Sources [30.3 kB]
-Get:6 http://security.ubuntu.com/ubuntu xenial-security/main amd64 Packages [321 kB]
-Get:7 http://archive.ubuntu.com/ubuntu xenial/universe Sources [9802 kB]
-Get:8 http://security.ubuntu.com/ubuntu xenial-security/restricted amd64 Packages [12.8 kB]
-Get:9 http://security.ubuntu.com/ubuntu xenial-security/universe amd64 Packages [135 kB]
-Get:10 http://security.ubuntu.com/ubuntu xenial-security/multiverse amd64 Packages [2932 B]
-Get:11 http://archive.ubuntu.com/ubuntu xenial/main amd64 Packages [1558 kB]
-Get:12 http://archive.ubuntu.com/ubuntu xenial/restricted amd64 Packages [14.1 kB]
-Get:13 http://archive.ubuntu.com/ubuntu xenial/universe amd64 Packages [9827 kB]
-Get:14 http://archive.ubuntu.com/ubuntu xenial/multiverse amd64 Packages [176 kB]
-Get:15 http://archive.ubuntu.com/ubuntu xenial-updates/universe Sources [189 kB]
-Get:16 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 Packages [673 kB]
-Get:17 http://archive.ubuntu.com/ubuntu xenial-updates/restricted amd64 Packages [13.2 kB]
-Get:18 http://archive.ubuntu.com/ubuntu xenial-updates/universe amd64 Packages [582 kB]
-Get:19 http://archive.ubuntu.com/ubuntu xenial-updates/multiverse amd64 Packages [9808 B]
-Get:20 http://archive.ubuntu.com/ubuntu xenial-backports/main amd64 Packages [4929 B]
-Get:21 http://archive.ubuntu.com/ubuntu xenial-backports/universe amd64 Packages [2567 B]
-Fetched 23.9 MB in 15s (1499 kB/s)
-Reading package lists...
- ---> a3d07a54ab3e
-Removing intermediate container 2e68c938ac3b
-Step 5 : RUN DEBIAN_FRONTEND=noninteractive apt-get install -y -q make gcc-arm-none-eabi binutils sudo
- ---> Running in 723ebafcdb6a
-Reading package lists...
-Building dependency tree...
-Reading state information...
-The following additional packages will be installed:
-  binutils-arm-none-eabi libgmp10 libmpc3 libmpfr4 libnewlib-arm-none-eabi
-  libnewlib-dev libstdc++-arm-none-eabi-newlib
-Suggested packages:
-  binutils-doc libnewlib-doc make-doc
-The following NEW packages will be installed:
-  binutils binutils-arm-none-eabi gcc-arm-none-eabi libgmp10 libmpc3 libmpfr4
-  libnewlib-arm-none-eabi libnewlib-dev libstdc++-arm-none-eabi-newlib make
-  sudo
-0 upgraded, 11 newly installed, 0 to remove and 9 not upgraded.
-Need to get 68.4 MB of archives.
-After this operation, 628 MB of additional disk space will be used.
-Get:1 http://archive.ubuntu.com/ubuntu xenial/main amd64 libgmp10 amd64 2:6.1.0+dfsg-2 [240 kB]
-Get:2 http://archive.ubuntu.com/ubuntu xenial/main amd64 libmpfr4 amd64 3.1.4-1 [191 kB]
-Get:3 http://archive.ubuntu.com/ubuntu xenial/main amd64 libmpc3 amd64 1.0.3-1 [39.7 kB]
-Get:4 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 sudo amd64 1.8.16-0ubuntu1.3 [390 kB]
-Get:5 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 binutils amd64 2.26.1-1ubuntu1~16.04.3 [2310 kB]
-Get:6 http://archive.ubuntu.com/ubuntu xenial/main amd64 make amd64 4.1-6 [151 kB]
-Get:7 http://archive.ubuntu.com/ubuntu xenial/universe amd64 binutils-arm-none-eabi amd64 2.26-4ubuntu1+8 [2083 kB]
-Get:8 http://archive.ubuntu.com/ubuntu xenial/universe amd64 gcc-arm-none-eabi amd64 15:4.9.3+svn231177-1 [17.3 MB]
-Get:9 http://archive.ubuntu.com/ubuntu xenial/universe amd64 libnewlib-dev all 2.2.0+git20150830.5a3d536-1 [105 kB]
-Get:10 http://archive.ubuntu.com/ubuntu xenial/universe amd64 libnewlib-arm-none-eabi all 2.2.0+git20150830.5a3d536-1 [14.0 MB]
-Get:11 http://archive.ubuntu.com/ubuntu xenial/universe amd64 libstdc++-arm-none-eabi-newlib all 15:4.9.3+svn227297-1+8 [31.6 MB]
-[91mdebconf: delaying package configuration, since apt-utils is not installed
-[0mFetched 68.4 MB in 38s (1771 kB/s)
-Selecting previously unselected package libgmp10:amd64.
-(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 4764 files and directories currently installed.)
-Preparing to unpack .../libgmp10_2%3a6.1.0+dfsg-2_amd64.deb ...
-Unpacking libgmp10:amd64 (2:6.1.0+dfsg-2) ...
-Selecting previously unselected package libmpfr4:amd64.
-Preparing to unpack .../libmpfr4_3.1.4-1_amd64.deb ...
-Unpacking libmpfr4:amd64 (3.1.4-1) ...
-Selecting previously unselected package libmpc3:amd64.
-Preparing to unpack .../libmpc3_1.0.3-1_amd64.deb ...
-Unpacking libmpc3:amd64 (1.0.3-1) ...
-Selecting previously unselected package sudo.
-Preparing to unpack .../sudo_1.8.16-0ubuntu1.3_amd64.deb ...
-Unpacking sudo (1.8.16-0ubuntu1.3) ...
-Selecting previously unselected package binutils.
-Preparing to unpack .../binutils_2.26.1-1ubuntu1~16.04.3_amd64.deb ...
-Unpacking binutils (2.26.1-1ubuntu1~16.04.3) ...
-Selecting previously unselected package make.
-Preparing to unpack .../archives/make_4.1-6_amd64.deb ...
-Unpacking make (4.1-6) ...
-Selecting previously unselected package binutils-arm-none-eabi.
-Preparing to unpack .../binutils-arm-none-eabi_2.26-4ubuntu1+8_amd64.deb ...
-Unpacking binutils-arm-none-eabi (2.26-4ubuntu1+8) ...
-Selecting previously unselected package gcc-arm-none-eabi.
-Preparing to unpack .../gcc-arm-none-eabi_15%3a4.9.3+svn231177-1_amd64.deb ...
-Unpacking gcc-arm-none-eabi (15:4.9.3+svn231177-1) ...
-Selecting previously unselected package libnewlib-dev.
-Preparing to unpack .../libnewlib-dev_2.2.0+git20150830.5a3d536-1_all.deb ...
-Unpacking libnewlib-dev (2.2.0+git20150830.5a3d536-1) ...
-Selecting previously unselected package libnewlib-arm-none-eabi.
-Preparing to unpack .../libnewlib-arm-none-eabi_2.2.0+git20150830.5a3d536-1_all.deb ...
-Unpacking libnewlib-arm-none-eabi (2.2.0+git20150830.5a3d536-1) ...
-Selecting previously unselected package libstdc++-arm-none-eabi-newlib.
-Preparing to unpack .../libstdc++-arm-none-eabi-newlib_15%3a4.9.3+svn227297-1+8_all.deb ...
-Unpacking libstdc++-arm-none-eabi-newlib (15:4.9.3+svn227297-1+8) ...
-Processing triggers for libc-bin (2.23-0ubuntu7) ...
-Setting up libgmp10:amd64 (2:6.1.0+dfsg-2) ...
-Setting up libmpfr4:amd64 (3.1.4-1) ...
-Setting up libmpc3:amd64 (1.0.3-1) ...
-Setting up sudo (1.8.16-0ubuntu1.3) ...
-Setting up binutils (2.26.1-1ubuntu1~16.04.3) ...
-Setting up make (4.1-6) ...
-Setting up binutils-arm-none-eabi (2.26-4ubuntu1+8) ...
-Setting up gcc-arm-none-eabi (15:4.9.3+svn231177-1) ...
-Setting up libnewlib-dev (2.2.0+git20150830.5a3d536-1) ...
-Setting up libnewlib-arm-none-eabi (2.2.0+git20150830.5a3d536-1) ...
-Setting up libstdc++-arm-none-eabi-newlib (15:4.9.3+svn227297-1+8) ...
-Processing triggers for libc-bin (2.23-0ubuntu7) ...
- ---> 8bd399e5af31
-Removing intermediate container 723ebafcdb6a
-Step 6 : ENV user versaloon
- ---> Running in 59946dd9848d
- ---> 34e178ce1234
-Removing intermediate container 59946dd9848d
-Step 7 : RUN useradd -d /home/$user -m -s /bin/bash $user
- ---> Running in 52c996ac9223
- ---> 66238c61c638
-Removing intermediate container 52c996ac9223
-Step 8 : RUN echo "$user ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/$user
- ---> Running in b768e09663c4
- ---> 86d3cd69dd1d
-Removing intermediate container b768e09663c4
-Step 9 : RUN chmod 0440 /etc/sudoers.d/$user
- ---> Running in cdc53f76ea07
- ---> 40ffbe2d1c6d
-Removing intermediate container cdc53f76ea07
-Step 10 : USER $user
- ---> Running in 4ebf3ea7db53
- ---> fe9d7720dbb8
-Removing intermediate container 4ebf3ea7db53
-Step 11 : WORKDIR /home/$user
- ---> Running in 7dd0045c7902
- ---> 50c227a89dd8
-Removing intermediate container 7dd0045c7902
-Step 12 : RUN mkdir -pv code
- ---> Running in 9c64ede38016
-mkdir: created directory 'code'
- ---> f805b0c7d255
-Removing intermediate container 9c64ede38016
-Step 13 : COPY . ./code/
- ---> 54eef3c87e39
-Removing intermediate container f361f2846fca
-Step 14 : RUN sudo chown $user.$user -R /home/$user/code
- ---> Running in 88b554f29e61
- ---> e7cc238445ba
-Removing intermediate container 88b554f29e61
-Step 15 : WORKDIR /home/$user/code/dongle/firmware/Projects/Versaloon/GCC
- ---> Running in 659a033da319
- ---> 12e141ac3a4f
-Removing intermediate container 659a033da319
-Step 16 : RUN make
- ---> Running in 1a1dfe12006f
-Start Compiling Project Versaloon
-User Files:
-./main.o ./usb_protocol_Versaloon.o ./vsfusbd_Versaloon.o ./compiler_string.o ./syscall.o ./stlink.o ./adi_v5p1.o ./cm_common.o ./app_interfaces.o ./GPIO.o ./CLKO.o ./USART.o ./SPI.o ./SDIO.o ./JTAG_TAP.o ./SWD.o ./SWIM.o ./DUSI.o ./MicroWire.o ./PowerExt.o ./IIC.o ./C2.o ./ISSP.o ./LPC_ICP.o ./MSP430_JTAG.o ./BDM.o ./PWM.o ./EBI.o ./ADC.o ./interfaces.o ./core.o ./STM32_CLKO.o ./STM32_GPIO.o ./STM32_USBD.o ./STM32_SPI.o ./STM32_TIM.o ./STM32_EINT.o ./STM32_ADC.o ./STM32_USART.o ./STM32_EBI.o ./STM32_FLASH.o ./STM32_SDIO.o ./usart_stream.o ./stream.o ./mal.o ./vsf_usbd.o ./vsfusbd_CDC.o ./vsfusbd_CDCACM.o ./vsfusbd_HID.o ./vsfusbd_MSC_BOT.o ./SCSI.o ./buffer.o ./fakefat32.o ./crc.o ./USB_TO_XXX.o ./USB_TO_CLKO.o ./USB_TO_USART.o ./USB_TO_SPI.o ./USB_TO_IIC.o ./USB_TO_GPIO.o ./USB_TO_PWM.o ./USB_TO_ADC.o ./USB_TO_DAC.o ./USB_TO_POWER.o ./USB_TO_C2.o ./USB_TO_ISSP.o ./USB_TO_LPCICP.o ./USB_TO_MSP430_JTAG.o ./USB_TO_JTAG_HL.o ./USB_TO_SWD.o ./USB_TO_JTAG_LL.o ./USB_TO_SWIM.o ./USB_TO_JTAG_RAW.o ./USB_TO_BDM.o ./USB_TO_DUSI.o ./USB_TO_MICROWIRE.o ./USB_TO_EBI.o ./CommandProcessor.o
-STM32 Library Files:
-./core_cm3.o ./system_stm32f10x.o ./misc.o ./stm32f10x_dma.o ./stm32f10x_gpio.o ./stm32f10x_rcc.o ./stm32f10x_spi.o ./stm32f10x_tim.o ./usb_mem.o ./usb_regs.o
-------------------------------------------------------------
-gcc version is
-arm-none-eabi-gcc (15:4.9.3+svn231177-1) 4.9.3 20150529 (prerelease)
-Copyright (C) 2014 Free Software Foundation, Inc.
-This is free software; see the source for copying conditions.  There is NO
-warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-
-------------------------------------------------------------
-arm-none-eabi-gcc -c -mcpu=cortex-m3 -mthumb -mfpu=vfp  -nostartfiles -fno-common -fomit-frame-pointer -Wall -g -Os -I .. -I ../../.. -I ../../../../../vsf/interfaces/cpu/stm32/hw/STM32F10x_Lib/Libraries/STM32F10x_StdPeriph_Driver/inc -I ../../../../../vsf/interfaces/cpu/stm32/hw/STM32F10x_Lib/Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x -I ../../../../../vsf/interfaces/cpu/stm32/hw/STM32F10x_Lib/Libraries/CMSIS/CM3/CoreSupport -I ../../../../../vsf/interfaces/cpu/stm32/hw/STM32F10x_Lib/Libraries/STM32_USB-FS-Device_Driver/inc -I ../.. -I ../../../versaloon_usb -I ../../../../../vsf/interfaces/cpu/stm32/hw -I ../../../../../vsf/compiler/ARMGCC -I . -I ../../../stlink -I ../../../../../src/target/core/arm_adi -I ../../../../../src/target/cortex-m -I ../../../Interfaces -I ../../../Interfaces/APP -I ../../../Interfaces/APP/GPIO -I ../../../Interfaces/APP/USART -I ../../../Interfaces/APP/SPI -I ../../../Interfaces/APP/JTAG -I ../../../Interfaces/APP/SWD -I ../../../Interfaces/APP/SWIM -I ../../../Interfaces/APP/DUSI -I ../../../Interfaces/APP/MicroWire -I ../../../Interfaces/APP/PowerExt -I ../../../Interfaces/APP/IIC -I ../../../Interfaces/APP/C2 -I ../../../Interfaces/APP/ISSP -I ../../../Interfaces/APP/LPC_ICP -I ../../../Interfaces/APP/MSP430_JTAG -I ../../../Interfaces/APP/BDM -I ../../../Interfaces/APP/PWM -I ../../../Interfaces/APP/EBI -I ../../../Interfaces/APP/ADC -I ../vsf_cfg -I ../../../../../vsf -I ../../../../../vsf/interfaces -I ../../../../../vsf/interfaces/cpu/stm32 -I ../../../../../vsf/interfaces/cpu/stm32/gpio -I ../../../../../vsf/interfaces/cpu/stm32/usbd -I ../../../../../vsf/interfaces/cpu/stm32/spi -I ../../../../../vsf/interfaces/cpu/stm32/timer -I ../../../../../vsf/interfaces/cpu/stm32/eint -I ../../../../../vsf/interfaces/cpu/stm32/adc -I ../../../../../vsf/interfaces/cpu/stm32/usart -I ../../../../../vsf/interfaces/cpu/stm32/ebi -I ../../../../../vsf/interfaces/cpu/stm32/flash -I ../../../../../vsf/interfaces/cpu/stm32/sdio -I ../../../../../vsf/tool/list -I ../../../USB_TO_XXX -DUSE_STDPERIPH_DRIVER -DSTM32F10X_XL -DCORE_DEBUG=STM32_DBG_NONE -DHSE_VALUE=8000000UL -DHW_BOARD=STM32F103C8_BluePill -D_HARDWARE_VER=0x15 -DFLASH_LOAD_OFFSET=0x8000 -D__TARGET_CHIP__=stm32 ../../../../../vsf/interfaces/cpu/stm32/hw/STM32F10x_Lib/Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x/startup/gcc_ride7/startup_stm32f10x_md.s
-arm-none-eabi-gcc -c -mcpu=cortex-m3 -mthumb -mfpu=vfp  -nostartfiles -fno-common -fomit-frame-pointer -Wall -g -Os -I .. -I ../../.. -I ../../../../../vsf/interfaces/cpu/stm32/hw/STM32F10x_Lib/Libraries/STM32F10x_StdPeriph_Driver/inc -I ../../../../../vsf/interfaces/cpu/stm32/hw/STM32F10x_Lib/Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x -I ../../../../../vsf/interfaces/cpu/stm32/hw/STM32F10x_Lib/Libraries/CMSIS/CM3/CoreSupport -I ../../../../../vsf/interfaces/cpu/stm32/hw/STM32F10x_Lib/Libraries/STM32_USB-FS-Device_Driver/inc -I ../.. -I ../../../versaloon_usb -I ../../../../../vsf/interfaces/cpu/stm32/hw -I ../../../../../vsf/compiler/ARMGCC -I . -I ../../../stlink -I ../../../../../src/target/core/arm_adi -I ../../../../../src/target/cortex-m -I ../../../Interfaces -I ../../../Interfaces/APP -I ../../../Interfaces/APP/GPIO -I ../../../Interfaces/APP/USART -I ../../../Interfaces/APP/SPI -I ../../../Interfaces/APP/JTAG -I ../../../Interfaces/APP/SWD -I ../../../Interfaces/APP/SWIM -I ../../../Interfaces/APP/DUSI -I ../../../Interfaces/APP/MicroWire -I ../../../Interfaces/APP/PowerExt -I ../../../Interfaces/APP/IIC -I ../../../Interfaces/APP/C2 -I ../../../Interfaces/APP/ISSP -I ../../../Interfaces/APP/LPC_ICP -I ../../../Interfaces/APP/MSP430_JTAG -I ../../../Interfaces/APP/BDM -I ../../../Interfaces/APP/PWM -I ../../../Interfaces/APP/EBI -I ../../../Interfaces/APP/ADC -I ../vsf_cfg -I ../../../../../vsf -I ../../../../../vsf/interfaces -I ../../../../../vsf/interfaces/cpu/stm32 -I ../../../../../vsf/interfaces/cpu/stm32/gpio -I ../../../../../vsf/interfaces/cpu/stm32/usbd -I ../../../../../vsf/interfaces/cpu/stm32/spi -I ../../../../../vsf/interfaces/cpu/stm32/timer -I ../../../../../vsf/interfaces/cpu/stm32/eint -I ../../../../../vsf/interfaces/cpu/stm32/adc -I ../../../../../vsf/interfaces/cpu/stm32/usart -I ../../../../../vsf/interfaces/cpu/stm32/ebi -I ../../../../../vsf/interfaces/cpu/stm32/flash -I ../../../../../vsf/interfaces/cpu/stm32/sdio -I ../../../../../vsf/tool/list -I ../../../USB_TO_XXX -DUSE_STDPERIPH_DRIVER -DSTM32F10X_XL -DCORE_DEBUG=STM32_DBG_NONE -DHSE_VALUE=8000000UL -DHW_BOARD=STM32F103C8_BluePill -D_HARDWARE_VER=0x15 -DFLASH_LOAD_OFFSET=0x8000 -D__TARGET_CHIP__=stm32 ../../../main.c ../../../usb_protocol_Versaloon.c ../../../versaloon_usb/vsfusbd_Versaloon.c compiler_string.c syscall.c ../../../stlink/stlink.c ../../../../../src/target/core/arm_adi/adi_v5p1.c ../../../../../src/target/cortex-m/cm_common.c ../../../Interfaces/app_interfaces.c ../../../Interfaces/APP/GPIO/GPIO.c ../../../Interfaces/APP/CLKO/CLKO.c ../../../Interfaces/APP/USART/USART.c ../../../Interfaces/APP/SPI/SPI.c ../../../Interfaces/APP/SDIO/SDIO.c ../../../Interfaces/APP/JTAG/JTAG_TAP.c ../../../Interfaces/APP/SWD/SWD.c ../../../Interfaces/APP/SWIM/SWIM.c ../../../Interfaces/APP/DUSI/DUSI.c ../../../Interfaces/APP/MicroWire/MicroWire.c ../../../Interfaces/APP/PowerExt/PowerExt.c ../../../Interfaces/APP/IIC/IIC.c ../../../Interfaces/APP/C2/C2.c ../../../Interfaces/APP/ISSP/ISSP.c ../../../Interfaces/APP/LPC_ICP/LPC_ICP.c ../../../Interfaces/APP/MSP430_JTAG/MSP430_JTAG.c ../../../Interfaces/APP/BDM/BDM.c ../../../Interfaces/APP/PWM/PWM.c ../../../Interfaces/APP/EBI/EBI.c ../../../Interfaces/APP/ADC/ADC.c ../../../../../vsf/interfaces/interfaces.c ../../../../../vsf/interfaces/cpu/stm32/core.c ../../../../../vsf/interfaces/cpu/stm32/clko/STM32_CLKO.c ../../../../../vsf/interfaces/cpu/stm32/gpio/STM32_GPIO.c ../../../../../vsf/interfaces/cpu/stm32/usbd/STM32_USBD.c ../../../../../vsf/interfaces/cpu/stm32/spi/STM32_SPI.c ../../../../../vsf/interfaces/cpu/stm32/timer/STM32_TIM.c ../../../../../vsf/interfaces/cpu/stm32/eint/STM32_EINT.c ../../../../../vsf/interfaces/cpu/stm32/adc/STM32_ADC.c ../../../../../vsf/interfaces/cpu/stm32/usart/STM32_USART.c ../../../../../vsf/interfaces/cpu/stm32/ebi/STM32_EBI.c ../../../../../vsf/interfaces/cpu/stm32/flash/STM32_FLASH.c ../../../../../vsf/interfaces/cpu/stm32/sdio/STM32_SDIO.c ../../../../../vsf/dal/usart_stream/usart_stream.c ../../../../../vsf/dal/stream/stream.c ../../../../../vsf/dal/mal/mal.c ../../../../../vsf/stack/usb_device/vsf_usbd.c ../../../../../vsf/stack/usb_device/class/CDC/vsfusbd_CDC.c ../../../../../vsf/stack/usb_device/class/CDC/vsfusbd_CDCACM.c ../../../../../vsf/stack/usb_device/class/HID/vsfusbd_HID.c ../../../../../vsf/stack/usb_device/class/MSC/vsfusbd_MSC_BOT.c ../../../../../vsf/stack/usb_device/class/MSC/SCSI.c ../../../../../vsf/tool/buffer/buffer.c ../../../../../vsf/tool/fakefat32/fakefat32.c ../../../../../vsf/tool/crc/crc.c ../../../USB_TO_XXX/USB_TO_XXX.c ../../../USB_TO_XXX/USB_TO_CLKO.c ../../../USB_TO_XXX/USB_TO_USART.c ../../../USB_TO_XXX/USB_TO_SPI.c ../../../USB_TO_XXX/USB_TO_IIC.c ../../../USB_TO_XXX/USB_TO_GPIO.c ../../../USB_TO_XXX/USB_TO_PWM.c ../../../USB_TO_XXX/USB_TO_ADC.c ../../../USB_TO_XXX/USB_TO_DAC.c ../../../USB_TO_XXX/USB_TO_POWER.c ../../../USB_TO_XXX/USB_TO_C2.c ../../../USB_TO_XXX/USB_TO_ISSP.c ../../../USB_TO_XXX/USB_TO_LPCICP.c ../../../USB_TO_XXX/USB_TO_MSP430_JTAG.c ../../../USB_TO_XXX/USB_TO_JTAG_HL.c ../../../USB_TO_XXX/USB_TO_SWD.c ../../../USB_TO_XXX/USB_TO_JTAG_LL.c ../../../USB_TO_XXX/USB_TO_SWIM.c ../../../USB_TO_XXX/USB_TO_JTAG_RAW.c ../../../USB_TO_XXX/USB_TO_BDM.c ../../../USB_TO_XXX/USB_TO_DUSI.c ../../../USB_TO_XXX/USB_TO_MICROWIRE.c ../../../USB_TO_XXX/USB_TO_EBI.c ../../../USB_TO_XXX/CommandProcessor.c
-[91m../../../../../vsf/interfaces/cpu/stm32/spi/STM32_SPI.c: In function 'stm32_spi_select':
-[0m[91m../../../../../vsf/interfaces/cpu/stm32/spi/STM32_SPI.c:593:10: warning: unused variable 'remap_idx' [-Wunused-variable]
-  uint8_t remap_idx = (index >> 4) & 0x0F;
-          ^
-[0m[91m../../../../../vsf/interfaces/cpu/stm32/spi/STM32_SPI.c: In function 'stm32_spi_deselect':
-[0m[91m../../../../../vsf/interfaces/cpu/stm32/spi/STM32_SPI.c:656:10: warning: unused variable 'remap_idx' [-Wunused-variable]
-  uint8_t remap_idx = (index >> 4) & 0x0F;
-          ^
-[0m[91m../../../../../vsf/interfaces/cpu/stm32/timer/STM32_TIM.c: In function 'stm32_timer_config':
-[0m[91m../../../../../vsf/interfaces/cpu/stm32/timer/STM32_TIM.c:85:16: warning: variable 'timer' set but not used [-Wunused-but-set-variable]
-  TIM_TypeDef * timer;
-                ^
-[0m[91m../../../../../vsf/interfaces/cpu/stm32/timer/STM32_TIM.c: In function 'stm32_timer_config_channel':
-../../../../../vsf/interfaces/cpu/stm32/timer/STM32_TIM.c:165:16: warning: variable 'timer' set but not used [-Wunused-but-set-variable]
-  TIM_TypeDef * timer;
-                ^
-[0m[91m../../../../../vsf/interfaces/cpu/stm32/sdio/STM32_SDIO.c: In function 'stm32_sdio_data_tx_isready':
-../../../../../vsf/interfaces/cpu/stm32/sdio/STM32_SDIO.c:310:11: warning: unused variable 'status' [-Wunused-variable]
-  uint32_t status = SDIO->STA;
-           ^
-[0m[91m../../../../../vsf/interfaces/cpu/stm32/sdio/STM32_SDIO.c:318:1: warning: control reaches end of non-void function [-Wreturn-type]
- }
- ^
-[0m[91m../../../../../vsf/tool/fakefat32/fakefat32.c: In function 'find_first_alphabet':
-[0m[91m../../../../../vsf/tool/fakefat32/fakefat32.c:93:2: warning: array subscript has type 'char' [-Wchar-subscripts]
-  while ((*str != '\0') && !isalpha(*str))
-  ^
-[0m[91m../../../../../vsf/tool/fakefat32/fakefat32.c: In function 'strncpy_toupper_fill':
-../../../../../vsf/tool/fakefat32/fakefat32.c:145:4: warning: array subscript has type 'char' [-Wchar-subscripts]
-    if ((*d++ = (char)toupper(*s++)) == 0)
-    ^
-[0m[91m../../../../../vsf/tool/fakefat32/fakefat32.c: In function 'fakefat32_dir_read':
-../../../../../vsf/tool/fakefat32/fakefat32.c:506:4: warning: array subscript has type 'char' [-Wchar-subscripts]
-    if (islower(find_first_alphabet(file->name)))
-    ^
-[0m[91m../../../../../vsf/tool/fakefat32/fakefat32.c:510:4: warning: array subscript has type 'char' [-Wchar-subscripts]
-    if (islower(find_first_alphabet(file->ext)))
-    ^
-[0marm-none-eabi-gcc -c -mcpu=cortex-m3 -mthumb -mfpu=vfp  -nostartfiles -fno-common -fomit-frame-pointer -Wall -g -Os -I .. -I ../../.. -I ../../../../../vsf/interfaces/cpu/stm32/hw/STM32F10x_Lib/Libraries/STM32F10x_StdPeriph_Driver/inc -I ../../../../../vsf/interfaces/cpu/stm32/hw/STM32F10x_Lib/Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x -I ../../../../../vsf/interfaces/cpu/stm32/hw/STM32F10x_Lib/Libraries/CMSIS/CM3/CoreSupport -I ../../../../../vsf/interfaces/cpu/stm32/hw/STM32F10x_Lib/Libraries/STM32_USB-FS-Device_Driver/inc -I ../.. -I ../../../versaloon_usb -I ../../../../../vsf/interfaces/cpu/stm32/hw -I ../../../../../vsf/compiler/ARMGCC -I . -I ../../../stlink -I ../../../../../src/target/core/arm_adi -I ../../../../../src/target/cortex-m -I ../../../Interfaces -I ../../../Interfaces/APP -I ../../../Interfaces/APP/GPIO -I ../../../Interfaces/APP/USART -I ../../../Interfaces/APP/SPI -I ../../../Interfaces/APP/JTAG -I ../../../Interfaces/APP/SWD -I ../../../Interfaces/APP/SWIM -I ../../../Interfaces/APP/DUSI -I ../../../Interfaces/APP/MicroWire -I ../../../Interfaces/APP/PowerExt -I ../../../Interfaces/APP/IIC -I ../../../Interfaces/APP/C2 -I ../../../Interfaces/APP/ISSP -I ../../../Interfaces/APP/LPC_ICP -I ../../../Interfaces/APP/MSP430_JTAG -I ../../../Interfaces/APP/BDM -I ../../../Interfaces/APP/PWM -I ../../../Interfaces/APP/EBI -I ../../../Interfaces/APP/ADC -I ../vsf_cfg -I ../../../../../vsf -I ../../../../../vsf/interfaces -I ../../../../../vsf/interfaces/cpu/stm32 -I ../../../../../vsf/interfaces/cpu/stm32/gpio -I ../../../../../vsf/interfaces/cpu/stm32/usbd -I ../../../../../vsf/interfaces/cpu/stm32/spi -I ../../../../../vsf/interfaces/cpu/stm32/timer -I ../../../../../vsf/interfaces/cpu/stm32/eint -I ../../../../../vsf/interfaces/cpu/stm32/adc -I ../../../../../vsf/interfaces/cpu/stm32/usart -I ../../../../../vsf/interfaces/cpu/stm32/ebi -I ../../../../../vsf/interfaces/cpu/stm32/flash -I ../../../../../vsf/interfaces/cpu/stm32/sdio -I ../../../../../vsf/tool/list -I ../../../USB_TO_XXX -DUSE_STDPERIPH_DRIVER -DSTM32F10X_XL -DCORE_DEBUG=STM32_DBG_NONE -DHSE_VALUE=8000000UL -DHW_BOARD=STM32F103C8_BluePill -D_HARDWARE_VER=0x15 -DFLASH_LOAD_OFFSET=0x8000 -D__TARGET_CHIP__=stm32 ../../../../../vsf/interfaces/cpu/stm32/hw/STM32F10x_Lib/Libraries/CMSIS/CM3/CoreSupport/core_cm3.c ../../../../../vsf/interfaces/cpu/stm32/hw/STM32F10x_Lib/Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x/system_stm32f10x.c ../../../../../vsf/interfaces/cpu/stm32/hw/STM32F10x_Lib/Libraries/STM32F10x_StdPeriph_Driver/src/misc.c ../../../../../vsf/interfaces/cpu/stm32/hw/STM32F10x_Lib/Libraries/STM32F10x_StdPeriph_Driver/src/stm32f10x_dma.c ../../../../../vsf/interfaces/cpu/stm32/hw/STM32F10x_Lib/Libraries/STM32F10x_StdPeriph_Driver/src/stm32f10x_gpio.c ../../../../../vsf/interfaces/cpu/stm32/hw/STM32F10x_Lib/Libraries/STM32F10x_StdPeriph_Driver/src/stm32f10x_rcc.c ../../../../../vsf/interfaces/cpu/stm32/hw/STM32F10x_Lib/Libraries/STM32F10x_StdPeriph_Driver/src/stm32f10x_spi.c ../../../../../vsf/interfaces/cpu/stm32/hw/STM32F10x_Lib/Libraries/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ../../../../../vsf/interfaces/cpu/stm32/hw/STM32F10x_Lib/Libraries/STM32_USB-FS-Device_Driver/src/usb_mem.c ../../../../../vsf/interfaces/cpu/stm32/hw/STM32F10x_Lib/Libraries/STM32_USB-FS-Device_Driver/src/usb_regs.c
-arm-none-eabi-gcc -Wl,--gc-sections,-Map=Versaloon_GCC-STM32F103C8_BluePill-0x8000.map,-cref,-u,Reset_Handler -I .. -I ../../.. -I ../../../../../vsf/interfaces/cpu/stm32/hw/STM32F10x_Lib/Libraries/STM32F10x_StdPeriph_Driver/inc -I ../../../../../vsf/interfaces/cpu/stm32/hw/STM32F10x_Lib/Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x -I ../../../../../vsf/interfaces/cpu/stm32/hw/STM32F10x_Lib/Libraries/CMSIS/CM3/CoreSupport -I ../../../../../vsf/interfaces/cpu/stm32/hw/STM32F10x_Lib/Libraries/STM32_USB-FS-Device_Driver/inc -I ../.. -I ../../../versaloon_usb -I ../../../../../vsf/interfaces/cpu/stm32/hw -I ../../../../../vsf/compiler/ARMGCC -I . -I ../../../stlink -I ../../../../../src/target/core/arm_adi -I ../../../../../src/target/cortex-m -I ../../../Interfaces -I ../../../Interfaces/APP -I ../../../Interfaces/APP/GPIO -I ../../../Interfaces/APP/USART -I ../../../Interfaces/APP/SPI -I ../../../Interfaces/APP/JTAG -I ../../../Interfaces/APP/SWD -I ../../../Interfaces/APP/SWIM -I ../../../Interfaces/APP/DUSI -I ../../../Interfaces/APP/MicroWire -I ../../../Interfaces/APP/PowerExt -I ../../../Interfaces/APP/IIC -I ../../../Interfaces/APP/C2 -I ../../../Interfaces/APP/ISSP -I ../../../Interfaces/APP/LPC_ICP -I ../../../Interfaces/APP/MSP430_JTAG -I ../../../Interfaces/APP/BDM -I ../../../Interfaces/APP/PWM -I ../../../Interfaces/APP/EBI -I ../../../Interfaces/APP/ADC -I ../vsf_cfg -I ../../../../../vsf -I ../../../../../vsf/interfaces -I ../../../../../vsf/interfaces/cpu/stm32 -I ../../../../../vsf/interfaces/cpu/stm32/gpio -I ../../../../../vsf/interfaces/cpu/stm32/usbd -I ../../../../../vsf/interfaces/cpu/stm32/spi -I ../../../../../vsf/interfaces/cpu/stm32/timer -I ../../../../../vsf/interfaces/cpu/stm32/eint -I ../../../../../vsf/interfaces/cpu/stm32/adc -I ../../../../../vsf/interfaces/cpu/stm32/usart -I ../../../../../vsf/interfaces/cpu/stm32/ebi -I ../../../../../vsf/interfaces/cpu/stm32/flash -I ../../../../../vsf/interfaces/cpu/stm32/sdio -I ../../../../../vsf/tool/list -I ../../../USB_TO_XXX -L../../ -T versaloonSTM32.ld ./startup_stm32f10x_md.o ./core_cm3.o ./system_stm32f10x.o ./misc.o ./stm32f10x_dma.o ./stm32f10x_gpio.o ./stm32f10x_rcc.o ./stm32f10x_spi.o ./stm32f10x_tim.o ./usb_mem.o ./usb_regs.o ./main.o ./usb_protocol_Versaloon.o ./vsfusbd_Versaloon.o ./compiler_string.o ./syscall.o ./stlink.o ./adi_v5p1.o ./cm_common.o ./app_interfaces.o ./GPIO.o ./CLKO.o ./USART.o ./SPI.o ./SDIO.o ./JTAG_TAP.o ./SWD.o ./SWIM.o ./DUSI.o ./MicroWire.o ./PowerExt.o ./IIC.o ./C2.o ./ISSP.o ./LPC_ICP.o ./MSP430_JTAG.o ./BDM.o ./PWM.o ./EBI.o ./ADC.o ./interfaces.o ./core.o ./STM32_CLKO.o ./STM32_GPIO.o ./STM32_USBD.o ./STM32_SPI.o ./STM32_TIM.o ./STM32_EINT.o ./STM32_ADC.o ./STM32_USART.o ./STM32_EBI.o ./STM32_FLASH.o ./STM32_SDIO.o ./usart_stream.o ./stream.o ./mal.o ./vsf_usbd.o ./vsfusbd_CDC.o ./vsfusbd_CDCACM.o ./vsfusbd_HID.o ./vsfusbd_MSC_BOT.o ./SCSI.o ./buffer.o ./fakefat32.o ./crc.o ./USB_TO_XXX.o ./USB_TO_CLKO.o ./USB_TO_USART.o ./USB_TO_SPI.o ./USB_TO_IIC.o ./USB_TO_GPIO.o ./USB_TO_PWM.o ./USB_TO_ADC.o ./USB_TO_DAC.o ./USB_TO_POWER.o ./USB_TO_C2.o ./USB_TO_ISSP.o ./USB_TO_LPCICP.o ./USB_TO_MSP430_JTAG.o ./USB_TO_JTAG_HL.o ./USB_TO_SWD.o ./USB_TO_JTAG_LL.o ./USB_TO_SWIM.o ./USB_TO_JTAG_RAW.o ./USB_TO_BDM.o ./USB_TO_DUSI.o ./USB_TO_MICROWIRE.o ./USB_TO_EBI.o ./CommandProcessor.o --output Versaloon_GCC-STM32F103C8_BluePill-0x8000.elf
-[91m/usr/lib/gcc/arm-none-eabi/4.9.3/../../../arm-none-eabi/bin/ld: section .init loaded at [0000000008016238,0000000008016243] overlaps section .data loaded at [0000000008016238,0000000008016eb3]
-collect2: error: ld returned 1 exit status
-[0m[91mmake: *** [Versaloon_GCC-STM32F103C8_BluePill-0x8000.elf] Error 1
-[0mmakefile:441: recipe for target 'Versaloon_GCC-STM32F103C8_BluePill-0x8000.elf' failed
-The command '/bin/sh -c make' returned a non-zero code: 2
-Unable to find image 'versaloon:latest' locally
-Pulling repository docker.io/library/versaloon
-docker: Error: image library/versaloon:latest not found.
-See 'docker run --help'.
