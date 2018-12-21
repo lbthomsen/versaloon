@@ -16,6 +16,11 @@ Versaloon-STM32F103C8_BluePill.bin
 Versaloon-STM32F103C8_BluePill.elf
 ```
 
+Download
+========
+
+You can download the released firmware here: https://github.com/zoobab/versaloon/releases/tag/v1.0
+
 Flashing
 ========
 
