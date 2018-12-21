@@ -55,10 +55,10 @@ else
 ifeq ($(HW_BOARD),STM32F103C8_BluePill)
 ########################################################################
 _HARDWARE_VER		= 0x15
-FLASH_LOAD_OFFSET	= 0x8000
-HSE_VALUE			= 8000000
-LD_FILE				= versaloonSTM32.ld
-TARGET_CHIP			= stm32
+FLASH_LOAD_OFFSET	= 0x0
+HSE_VALUE		= 8000000
+LD_FILE			= versaloonSTM32.ld
+TARGET_CHIP		= stm32
 TARGET_STM32		= XLDensity
 USR_DEFS+=-DCORE_DEBUG=STM32_DBG_NONE
 else
