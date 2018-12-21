@@ -34,19 +34,62 @@ SECTIONS
 	    . = ALIGN(4);
 	    
         *(.text)                   /* remaining code */
-        *(.text.*)                   /* remaining code */
+        *(.text.*)                 /* remaining code */
         *(.rodata)                 /* read-only data (constants) */
         *(.rodata*)
         *(.glue_7)
         *(.glue_7t)
+        
+        /* Some stuff of CodeSourcery? */
+        *(.init)
+        *(.fini)
+        *(.eh_frame)
 
+        /* Parameters and log system datas */
+        . = ALIGN(4);
+        _param_start = .;
+        KEEP(*(.param))
+        KEEP(*(.param.*))
+        _param_stop = .;
+        . = ALIGN(4);
+        _log_start = .;
+        KEEP(*(.log))
+        KEEP(*(.log.*))
+        _log_stop = .;
+        
+        
 	    . = ALIGN(4);
    	 _etext = .;
 	    /* This is used by the startup in order to initialize the .data secion */
-   	 _sidata = _etext;
+   	 /* _sidata = _etext; */
     } >FLASH
-    
+
+    .libc :
+    {
+      . = ALIGN(4);
+      *(.ARM.exidx*)
+      . = ALIGN(4);
+      
+      _elibc = .;
+      _sidata = _elibc;
+    } >FLASH
  
+    /* for some LPC devices, there is a FLASH patch to place at a specified address */
+    .flashpatch :
+    {
+	. = ALIGN(4);
+        KEEP(*(.flashpatch))            /* flashpatch data */
+	. = ALIGN(4);
+    } >FLASHPATCH
+    
+    /* for some LPC devices, there is a FLASH patch to place at a specified address
+    and then there is the rest of the flash */
+    .endflash :
+    {
+	. = ALIGN(4);
+        *(.endflash)            /* endflash code */
+	. = ALIGN(4);
+    } >ENDFLASH
 
     /* This is the initialized data section
     The program executes knowing that the data is in the RAM
@@ -60,6 +103,7 @@ SECTIONS
         
         *(.data)
         *(.data.*)
+        *(.RAMtext)
 
 	    . = ALIGN(4);
 	    /* This is used by the startup in order to initialize the .data secion */
@@ -68,7 +112,7 @@ SECTIONS
     
     
 
-    /* This is the uninitialized data section */
+    /* This is the uninitialized data section. This memory is zeroed at start up */
     .bss :
     {
 	    . = ALIGN(4);
@@ -76,26 +120,47 @@ SECTIONS
         _sbss = .;
         
         *(.bss)
+        *(.bss.*)
         *(COMMON)
         
 	    . = ALIGN(4);
 	    /* This is used by the startup in order to initialize the .bss secion */
-        _ebss = . ;
+   	 _ebss = . ;
     } >RAM
-    
-    PROVIDE ( end = _ebss );
-    PROVIDE ( _end = _ebss );
+
+
+
+    /* This is uninitialized data that is NOT zeroed at start up. */
+    .nzds :
+    {
+	    . = ALIGN(4);
+        _snzds = .;
+
+        *(.nzds)
+        *(.nzds.*)
+        *(COMMON)
+
+	    . = ALIGN(4);
+   	 _enzds = . ;
+    } >RAM
+
+
+    PROVIDE ( end = _enzds );
+    PROVIDE ( _end = _enzds );
     
     /* This is the user stack section 
     This is just to check that there is enough RAM left for the User mode stack
     It should generate an error if it's full.
      */
-    ._user_heap_stack :
+    ._usrstack :
     {
 	    . = ALIGN(4);
-        . = . + _Heap_Size ;
-        . = . + _Stack_Size ;
+        _susrstack = . ;
+        
+        . = . + _Minimum_Stack_Size ;
+        
 	    . = ALIGN(4);
+        _eusrstack = . ;
     } >RAM
     
 
@@ -193,6 +258,5 @@ SECTIONS
     .debug_typenames 0 : { *(.debug_typenames) }
     .debug_varnames  0 : { *(.debug_varnames) }
 }
-
 
 

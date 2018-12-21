@@ -1,9 +1,4 @@
 *.o
-release/firmware/STM32F103C8_BluePill/build.log
-release/firmware/STM32F103C8_BluePill/Versaloon_GCC-STM32F103C8_BluePill-0x0.bin
-release/firmware/STM32F103C8_BluePill/Versaloon_GCC-STM32F103C8_BluePill-0x0.elf
-release/firmware/STM32F103C8_BluePill/Versaloon_GCC-STM32F103C8_BluePill-0x0.hex
-release/firmware/STM32F103C8_BluePill/Versaloon_GCC-STM32F103C8_BluePill-0x0.map
-release/firmware/STM32F103C8_BluePill/compiler_string.c
-release/firmware/STM32F103C8_BluePill/makefile
-release/firmware/STM32F103C8_BluePill/syscall.c
+*.bin
+*.elf
+*.hex

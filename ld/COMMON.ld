@@ -1,8 +1,28 @@
 /*
-Common part of the linker scripts for STR32 devices
-Copyright RAISONANCE 2007
-You can use, modify and distribute thisfile freely, but without any waranty.
+Common part of the linker scripts for STM32 devices
+Copyright RAISONANCE 2009
+You can use, modify and distribute this file freely, but without any waranty.
 */
+
+
+/* default stack sizes. 
+
+These are used by the startup in order to allocate stacks for the different modes.
+*/
+
+__Stack_Size = 1024 ;
+
+PROVIDE ( _Stack_Size = __Stack_Size ) ;
+
+__Stack_Init = _estack  - __Stack_Size ;
+
+/*"PROVIDE" allows to easily override these values from an object file or the commmand line.*/
+PROVIDE ( _Stack_Init = __Stack_Init ) ;
+
+/*
+There will be a link error if there is not this amount of RAM free at the end.
+*/
+_Minimum_Stack_Size = 0x100 ;
 
 
 
@@ -19,14 +39,25 @@ PROVIDE (   Abort_Handler = 0 ) ;
 PROVIDE (   FIQ_Handler = 0 ) ;
 
 PROVIDE (   NMIException = 0 ) ;
+PROVIDE (   NMI_Handler = 0 ) ;
 PROVIDE (   HardFaultException = 0 ) ;
+PROVIDE (   HardFault_Handler = 0 ) ;
 PROVIDE (   MemManageException = 0 ) ;
+PROVIDE (   MemManage_Handler = 0 ) ;
 PROVIDE (   BusFaultException = 0 ) ;
+PROVIDE (   BusFault_Handler = 0 ) ;
 PROVIDE (   UsageFaultException = 0 ) ;
+PROVIDE (   UsageFault_Handler = 0 ) ;
+
 PROVIDE (   SVCHandler = 0 ) ;
+PROVIDE (   SVC_Handler = 0 ) ;
 PROVIDE (   DebugMonitor = 0 ) ;
+PROVIDE (   DebugMon_Handler = 0 ) ;
 PROVIDE (   PendSVC = 0 ) ;
+PROVIDE (   PendSV_Handler = 0 ) ;
 PROVIDE (   SysTickHandler = 0 ) ;
+PROVIDE (   SysTick_Handler = 0 ) ;
+
 PROVIDE (   WWDG_IRQHandler = 0 ) ;
 PROVIDE (   PVD_IRQHandler = 0 ) ;
 PROVIDE (   TAMPER_IRQHandler = 0 ) ;
@@ -45,11 +76,23 @@ PROVIDE (   DMAChannel4_IRQHandler = 0 ) ;
 PROVIDE (   DMAChannel5_IRQHandler = 0 ) ;
 PROVIDE (   DMAChannel6_IRQHandler = 0 ) ;
 PROVIDE (   DMAChannel7_IRQHandler = 0 ) ;
+PROVIDE (   DMA1_Channel1_IRQHandler = 0 ) ;
+PROVIDE (   DMA1_Channel2_IRQHandler = 0 ) ;
+PROVIDE (   DMA1_Channel3_IRQHandler = 0 ) ;
+PROVIDE (   DMA1_Channel4_IRQHandler = 0 ) ;
+PROVIDE (   DMA1_Channel5_IRQHandler = 0 ) ;
+PROVIDE (   DMA1_Channel6_IRQHandler = 0 ) ;
+PROVIDE (   DMA1_Channel7_IRQHandler = 0 ) ;
 PROVIDE (   ADC_IRQHandler = 0 ) ;
+PROVIDE (   ADC1_2_IRQHandler = 0 ) ;
 PROVIDE (   USB_HP_CAN_TX_IRQHandler = 0 ) ;
+PROVIDE (   USB_HP_CAN1_TX_IRQHandler = 0 ) ;
 PROVIDE (   USB_LP_CAN_RX0_IRQHandler = 0 ) ;
+PROVIDE (   USB_LP_CAN1_RX0_IRQHandler = 0 ) ;
 PROVIDE (   CAN_RX1_IRQHandler = 0 ) ;
+PROVIDE (   CAN1_RX1_IRQHandler = 0 ) ;
 PROVIDE (   CAN_SCE_IRQHandler = 0 ) ;
+PROVIDE (   CAN1_SCE_IRQHandler = 0 ) ;
 PROVIDE (   EXTI9_5_IRQHandler = 0 ) ;
 PROVIDE (   TIM1_BRK_IRQHandler = 0 ) ;
 PROVIDE (   TIM1_UP_IRQHandler = 0 ) ;
@@ -70,6 +113,23 @@ PROVIDE (   USART3_IRQHandler = 0 ) ;
 PROVIDE (   EXTI15_10_IRQHandler = 0 ) ;
 PROVIDE (   RTCAlarm_IRQHandler = 0 ) ;
 PROVIDE (   USBWakeUp_IRQHandler = 0 ) ;
+PROVIDE (   TIM8_BRK_IRQHandler = 0 ) ;
+PROVIDE (   TIM8_UP_IRQHandler = 0 );
+PROVIDE (   TIM8_TRG_COM_IRQHandler = 0 ) ;
+PROVIDE (   TIM8_CC_IRQHandler = 0 ) ;
+PROVIDE (   ADC3_IRQHandler = 0 ) ;
+PROVIDE (   FSMC_IRQHandler = 0 ) ;
+PROVIDE (   SDIO_IRQHandler = 0 ) ;
+PROVIDE (   TIM5_IRQHandler = 0 ) ;
+PROVIDE (   SPI3_IRQHandler = 0 ) ;
+PROVIDE (   UART4_IRQHandler = 0 ) ;
+PROVIDE (   UART5_IRQHandler = 0 ) ;
+PROVIDE (   TIM6_IRQHandler = 0 ) ;
+PROVIDE (   TIM7_IRQHandler = 0 ) ;
+PROVIDE (   DMA2_Channel1_IRQHandler = 0 ) ;
+PROVIDE (   DMA2_Channel2_IRQHandler = 0 ) ;
+PROVIDE (   DMA2_Channel3_IRQHandler = 0 ) ;
+PROVIDE (   DMA2_Channel4_5_IRQHandler = 0 ) ;
 
 
 
@@ -141,4 +201,3 @@ SCS_BASE              = 0xE000E000;
 PROVIDE ( SysTick         = (SCS_BASE + 0x0010) ) ;
 PROVIDE ( NVIC            = (SCS_BASE + 0x0100) ) ;
 PROVIDE ( SCB             = (SCS_BASE + 0x0D00) ) ;
-
