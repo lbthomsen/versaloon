@@ -6,10 +6,10 @@ include	board_defs.mk
 
 # directory define
 PRJDIR	    = .
-SRCDIR      = dongle/firmware
+SRCDIR      = firmware
 VSFDIR      = vsf
 VSPROGDIR	= src
-VSFCFGDIR   = dongle/firmware/Projects/Versaloon/vsf_cfg
+VSFCFGDIR   = firmware/Projects/Versaloon/vsf_cfg
 OBJ_DIR     = release
 APP_IFACES_DIR = $(SRCDIR)/Interfaces/APP
 STM32_IFACES_DIR = $(VSFDIR)/interfaces/cpu/stm32
