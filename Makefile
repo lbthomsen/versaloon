@@ -22,10 +22,6 @@ USR_INCS+= -I $(SRCDIR)/versaloon_usb
 USR_INCS+= -I $(STM32_IFACES_DIR)/hw
 USR_INCS+= -I $(VSFDIR)/compiler/ARMGCC
 
-# compiler
-USR_SRCS+= $(SRCDIR)/syscall.c
-USR_SRCS+= $(SRCDIR)/compiler_string.c
-
 #stlink
 USR_SRCS+= $(SRCDIR)/stlink/stlink.c
 USR_INCS+= -I $(SRCDIR)/stlink
