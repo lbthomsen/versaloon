@@ -150,6 +150,7 @@ Todo
 * Try it out on a maple board
 * Try it out on a blackpill board
 * Add some wiring/fritzing documention with some MIPS targets
+* Make it work with urjtag, right now it trows an error for "jtag> cable vsllink error: Couldn't connect to suitable USB device. error: not found: no USB connections"
 
 Links
 =====
