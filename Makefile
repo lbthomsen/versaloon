@@ -6,10 +6,10 @@ include	board_defs.mk
 
 # directory define
 PRJDIR	    = .
-SRCDIR      = dongle/firmware
+SRCDIR      = firmware
 VSFDIR      = vsf
 VSPROGDIR	= src
-VSFCFGDIR   = dongle/firmware/Projects/Versaloon/vsf_cfg
+VSFCFGDIR   = firmware/Projects/Versaloon/vsf_cfg
 OBJ_DIR     = release
 APP_IFACES_DIR = $(SRCDIR)/Interfaces/APP
 STM32_IFACES_DIR = $(VSFDIR)/interfaces/cpu/stm32
@@ -21,16 +21,6 @@ USR_SRCS+= $(SRCDIR)/main.c $(SRCDIR)/usb_protocol_Versaloon.c $(SRCDIR)/versalo
 USR_INCS+= -I $(SRCDIR)/versaloon_usb
 USR_INCS+= -I $(STM32_IFACES_DIR)/hw
 USR_INCS+= -I $(VSFDIR)/compiler/ARMGCC
-
-# compiler
-USR_SRCS+= $(SRCDIR)/syscall.c
-USR_SRCS+= $(SRCDIR)/compiler_string.c
-
-#stlink
-USR_SRCS+= $(SRCDIR)/stlink/stlink.c
-USR_INCS+= -I $(SRCDIR)/stlink
-USR_SRCS+= $(VSPROGDIR)/target/core/arm_adi/adi_v5p1.c $(VSPROGDIR)/target/cortex-m/cm_common.c
-USR_INCS+= -I $(VSPROGDIR)/target/core/arm_adi -I $(VSPROGDIR)/target/cortex-m
 
 #APP interfaces
 USR_SRCS+= $(SRCDIR)/Interfaces/app_interfaces.c
