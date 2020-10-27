@@ -117,6 +117,8 @@ Create somewhere a file called my_vsllink.cfg with this content :
 
 ```
 interface vsllink
+vsllink_usb_vid 0x0483
+vsllink_usb_pid 0x5740
 adapter_khz 100
 transport select jtag
 ```
