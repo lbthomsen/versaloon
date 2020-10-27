@@ -113,7 +113,7 @@ TMS => GPIO B4
 OpenOCD config file
 ===================
 
-Create somewhere a file called my_vsllink.cfg with this content :
+Create somewhere a file called ```my_vsllink.cfg``` with this content :
 
 ```
 interface vsllink
