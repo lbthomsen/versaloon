@@ -163,3 +163,4 @@ Links
 * stm32flash docker container: https://hub.docker.com/r/zoobab/stm32flash-docker
 * Hackaday: Versaloon ported to stm8 and stm32 discovery boards: https://hackaday.com/2011/02/06/versaloon-ported-to-stm8-and-stm32-discovery-boards/
 * Versaloon JTAG on a Canon S100: https://chdk.setepontos.com/index.php?topic=13408.0
+* OpenWRT forum: TP-Link Archer C7 v1/v2 JTAG u-boot recovery using ST-Link v2 USB adapter clone known as Baite: https://forum.openwrt.org/t/tp-link-archer-c7-v1-v2-jtag-u-boot-recovery-using-st-link-v2-usb-adapter-clone-known-as-baite/39582/2
