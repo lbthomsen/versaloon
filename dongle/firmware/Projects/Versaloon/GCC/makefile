@@ -19,7 +19,7 @@ EMBEDDED_VSPROG_EN = no
 # ST_Link
 # STM32F0_Discovery
 #
-HW_BOARD = STM32F103C8_BluePill
+HW_BOARD = ST_Link
 
 #
 include	../../board_defs.mk
